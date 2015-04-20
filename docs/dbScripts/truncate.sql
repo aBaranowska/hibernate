@@ -1,0 +1,14 @@
+USE hibernate;
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE product_category;
+TRUNCATE category;
+TRUNCATE product;
+TRUNCATE user_order;
+TRUNCATE individual_user;
+TRUNCATE corporation_user;
+TRUNCATE user;
+TRUNCATE card_payment;
+TRUNCATE cheque_payment;
+TRUNCATE payment;
+TRUNCATE generated_keys;
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">admin</property>
+
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.use_sql_comments">true</property>
+
+		<!-- C3P0 Connection Pool -->
+		<!-- default: 1 -->
+		<property name="hibernate.c3p0.min_size">10</property>
+		<!-- default: 100 -->
+		<property name="hibernate.c3p0.max_size">20</property>
+		<!-- default: 0, caching is disable -->
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<!-- default: 0, never expire -->
+		<property name="hibernate.c3p0.timeout">1800</property>
+
+		<!-- EHCache Second Level Caching -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+
+		<mapping class="com.recglobal.hibernate.model.User" />
+		<mapping class="com.recglobal.hibernate.model.IndividualUser" />
+		<mapping class="com.recglobal.hibernate.model.CorporationUser" />
+		<mapping class="com.recglobal.hibernate.model.Payment" />
+		<mapping class="com.recglobal.hibernate.model.CardPayment" />
+		<mapping class="com.recglobal.hibernate.model.ChequePayment" />
+		<mapping class="com.recglobal.hibernate.model.Category" />
+		<mapping class="com.recglobal.hibernate.model.Product" />
+		<mapping class="com.recglobal.hibernate.model.ProductCategory" />
+		<mapping class="com.recglobal.hibernate.model.ProductOrder" />
+		<mapping class="com.recglobal.hibernate.model.Order" />
+		<mapping class="com.recglobal.hibernate.model.Stock" />
+		<mapping class="com.recglobal.hibernate.model.GoodStock" />
+		<mapping class="com.recglobal.hibernate.model.ServiceStock" />
+		<mapping class="com.recglobal.hibernate.model.StockDailyRecord" />
+		<mapping class="com.recglobal.hibernate.model.Car" />
+	</session-factory>
+</hibernate-configuration>

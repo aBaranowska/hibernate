@@ -1,0 +1,38 @@
+<ehcache>
+	<!-- EHCache stores data into memory but when it starts overflowing, it 
+		start writing data into file system. We use this property to define the location 
+		where EHCache will write the overflown data. -->
+	<diskStore path="java.io.tmpdir/ehcache" />
+
+	<!-- It’s a mandatory configuration, it is used when an Object need to be 
+		cached and there are no caching regions defined for that. -->
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" maxEntriesLocalDisk="10000000"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+
+	<!-- We use cache element to define the region and it’s configurations. 
+		We can define multiple regions and their properties, while defining model 
+		beans cache properties, we can also define region with caching strategies. -->
+	<cache name="category" maxEntriesLocalHeap="10000" eternal="false"
+		timeToIdleSeconds="5" timeToLiveSeconds="10">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<!-- This cache is used if you use a query cache without setting a name. -->
+	<cache name="org.hibernate.cache.StandardQueryCache"
+		maxEntriesLocalHeap="5" eternal="false" timeToLiveSeconds="120">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<!-- Tracks the timestamps of the most recent updates to particular tables. 
+		It is important that the cache timeout of the underlying cache implementation 
+		be set to a higher value than the timeouts of any of the query caches. In 
+		fact, it is recommend that the underlying cache not be configured for expiry 
+		at all. -->
+	<cache name="org.hibernate.cache.UpdateTimestampsCache"
+		maxEntriesLocalHeap="5000" eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+</ehcache>
